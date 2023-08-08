@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-webapp
+  namespace: dev
+  labels:
+    app: pythonLogs
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: pythonLogs
+  template:
+    metadata:
+      labels:
+        app: pythonLogs
+    spec:
+      containers:
+      - name: pythonlogs
+        image: sharma4rajesh/pythonlogsimg:0.2
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000
